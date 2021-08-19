@@ -616,7 +616,7 @@ while ($i < ($limit ? min($num, $limit) : $num)) {
 
 		if (in_array($val['type'], array('timestamp'))) {
 			$cssforfield .= ($cssforfield ? ' ' : '').'nowrap';
-		} elseif ($key == 'ref') {
+		} elseif ($key == 'label') {
 			$cssforfield .= ($cssforfield ? ' ' : '').'nowrap';
 		}
 
@@ -629,8 +629,8 @@ while ($i < ($limit ? min($num, $limit) : $num)) {
 			print '<td'.($cssforfield ? ' class="'.$cssforfield.'"' : '').'>';
 			if ($key == 'status') {
 				print $object->getLibStatut(5);
-			} elseif ($key == 'rowid') {
-				print $object->showOutputField($val, $key, $object->id, '');
+			} elseif ($key == 'label') {
+				print $object->getNomUrl(1, '', 0, '', 1);
 			} else {
 				print $object->showOutputField($val, $key, $object->$key, '');
 			}

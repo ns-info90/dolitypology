@@ -18,6 +18,7 @@ CREATE TABLE llx_dolitypology_typology(
 	-- BEGIN MODULEBUILDER FIELDS
 	rowid integer AUTO_INCREMENT PRIMARY KEY NOT NULL, 
 	label varchar(255), 
+	element_type varchar(50), 
 	description text, 
 	note_public text, 
 	note_private text, 

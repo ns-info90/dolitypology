@@ -297,7 +297,7 @@ class modDoliTypology extends DolibarrModules
 			'langs'=>'dolitypology@dolitypology', // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
 			'position'=>1000 + $r,
 			'enabled'=>'$conf->dolitypology->enabled', // Define condition to show or hide menu entry. Use '$conf->dolitypology->enabled' if entry must be visible if module is enabled.
-			'perms'=>'1', // Use 'perms'=>'$user->rights->dolitypology->typology->read' if you want your menu with a permission rules
+			'perms'=>'$user->rights->dolitypology->typology->read', // Use 'perms'=>'$user->rights->dolitypology->typology->read' if you want your menu with a permission rules
 			'target'=>'',
 			'user'=>2, // 0=Menu for internal users, 1=external users, 2=both
 		);
@@ -363,7 +363,7 @@ class modDoliTypology extends DolibarrModules
             // Define condition to show or hide menu entry. Use '$conf->dolitypology->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
             'enabled'=>'$conf->dolitypology->enabled',
             // Use 'perms'=>'$user->rights->dolitypology->level1->level2' if you want your menu with a permission rules
-            'perms'=>'1',
+            'perms'=>'$user->rights->dolitypology->typology->read',
             'target'=>'',
             // 0=Menu for internal users, 1=external users, 2=both
             'user'=>2,
@@ -383,7 +383,7 @@ class modDoliTypology extends DolibarrModules
             // Define condition to show or hide menu entry. Use '$conf->dolitypology->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
             'enabled'=>'$conf->dolitypology->enabled',
             // Use 'perms'=>'$user->rights->dolitypology->level1->level2' if you want your menu with a permission rules
-            'perms'=>'1',
+            'perms'=>'$user->rights->dolitypology->typology->read',
             'target'=>'',
             // 0=Menu for internal users, 1=external users, 2=both
             'user'=>2

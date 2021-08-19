@@ -24,6 +24,7 @@
 
 // Put here all includes required by your class file
 require_once DOL_DOCUMENT_ROOT . '/core/class/commonobject.class.php';
+require_once DOL_DOCUMENT_ROOT . '/core/class/extrafields.class.php';
 //require_once DOL_DOCUMENT_ROOT . '/societe/class/societe.class.php';
 //require_once DOL_DOCUMENT_ROOT . '/product/class/product.class.php';
 
@@ -91,21 +92,23 @@ class Typology extends CommonObject
 	/**
 	 * @var array  Array with all fields and their property. Do not use it as a static var. It may be modified by constructor.
 	 */
-	public $fields = array(
-		'rowid' => array('type' => 'integer', 'label' => 'TechnicalID', 'enabled' => '1', 'position' => 1, 'notnull' => 1, 'visible' => 0, 'noteditable' => '1', 'index' => 1, 'css' => 'left', 'comment' => "Id"),
-		'label' => array('type' => 'varchar(255)', 'label' => 'Label', 'enabled' => '1', 'position' => 30, 'notnull' => 0, 'visible' => 1, 'searchall' => 1, 'css' => 'minwidth300', 'cssview' => 'wordbreak', 'help' => "Help text", 'showoncombobox' => '2',),
-		'description' => array('type' => 'text', 'label' => 'Description', 'enabled' => '1', 'position' => 60, 'notnull' => 0, 'visible' => 3,),
-		'note_public' => array('type' => 'html', 'label' => 'NotePublic', 'enabled' => '1', 'position' => 61, 'notnull' => 0, 'visible' => 0,),
-		'note_private' => array('type' => 'html', 'label' => 'NotePrivate', 'enabled' => '1', 'position' => 62, 'notnull' => 0, 'visible' => 0,),
-		'date_creation' => array('type' => 'datetime', 'label' => 'DateCreation', 'enabled' => '1', 'position' => 500, 'notnull' => 1, 'visible' => -2,),
-		'tms' => array('type' => 'timestamp', 'label' => 'DateModification', 'enabled' => '1', 'position' => 501, 'notnull' => 0, 'visible' => -2,),
-		'fk_user_creat' => array('type' => 'integer:User:user/class/user.class.php', 'label' => 'UserAuthor', 'enabled' => '1', 'position' => 510, 'notnull' => 1, 'visible' => -2, 'foreignkey' => 'user.rowid',),
-		'fk_user_modif' => array('type' => 'integer:User:user/class/user.class.php', 'label' => 'UserModif', 'enabled' => '1', 'position' => 511, 'notnull' => -1, 'visible' => -2,),
-		'import_key' => array('type' => 'varchar(14)', 'label' => 'ImportId', 'enabled' => '1', 'position' => 1000, 'notnull' => -1, 'visible' => -2,),
-		'status' => array('type' => 'smallint', 'label' => 'Status', 'enabled' => '1', 'position' => 1000, 'notnull' => 1, 'visible' => 1, 'index' => 1, 'arrayofkeyval' => array('0' => 'Brouillon', '1' => 'Valid&eacute;', '9' => 'Annul&eacute;'),),
+	public $fields=array(
+		'rowid' => array('type'=>'integer', 'label'=>'TechnicalID', 'enabled'=>'1', 'position'=>1, 'notnull'=>1, 'visible'=>0, 'noteditable'=>'1', 'index'=>1, 'css'=>'left', 'comment'=>"Id"),
+		'label' => array('type'=>'varchar(255)', 'label'=>'Label', 'enabled'=>'1', 'position'=>30, 'notnull'=>0, 'visible'=>1, 'searchall'=>1, 'css'=>'minwidth300', 'cssview'=>'wordbreak', 'help'=>"Help text", 'showoncombobox'=>'2',),
+		'element_type' => array('type'=>'varchar(50)', 'label'=>'ElementType', 'enabled'=>'1', 'position'=>100, 'notnull'=>-1, 'visible'=>1,),
+		'description' => array('type'=>'text', 'label'=>'Description', 'enabled'=>'1', 'position'=>60, 'notnull'=>0, 'visible'=>3,),
+		'note_public' => array('type'=>'html', 'label'=>'NotePublic', 'enabled'=>'1', 'position'=>61, 'notnull'=>0, 'visible'=>0,),
+		'note_private' => array('type'=>'html', 'label'=>'NotePrivate', 'enabled'=>'1', 'position'=>62, 'notnull'=>0, 'visible'=>0,),
+		'date_creation' => array('type'=>'datetime', 'label'=>'DateCreation', 'enabled'=>'1', 'position'=>500, 'notnull'=>1, 'visible'=>-2,),
+		'tms' => array('type'=>'timestamp', 'label'=>'DateModification', 'enabled'=>'1', 'position'=>501, 'notnull'=>0, 'visible'=>-2,),
+		'fk_user_creat' => array('type'=>'integer:User:user/class/user.class.php', 'label'=>'UserAuthor', 'enabled'=>'1', 'position'=>510, 'notnull'=>1, 'visible'=>-2, 'foreignkey'=>'user.rowid',),
+		'fk_user_modif' => array('type'=>'integer:User:user/class/user.class.php', 'label'=>'UserModif', 'enabled'=>'1', 'position'=>511, 'notnull'=>-1, 'visible'=>-2,),
+		'import_key' => array('type'=>'varchar(14)', 'label'=>'ImportId', 'enabled'=>'1', 'position'=>1000, 'notnull'=>-1, 'visible'=>-2,),
+		'status' => array('type'=>'smallint', 'label'=>'Status', 'enabled'=>'1', 'position'=>1000, 'notnull'=>1, 'visible'=>1, 'default'=>1, 'index'=>1, 'arrayofkeyval'=>array('0'=>'Disabled', '1'=>'Enabled',)),
 	);
 	public $rowid;
 	public $label;
+	public $element_type;
 	public $description;
 	public $note_public;
 	public $note_private;
@@ -116,41 +119,6 @@ class Typology extends CommonObject
 	public $import_key;
 	public $status;
 	// END MODULEBUILDER PROPERTIES
-
-
-	// If this object has a subtable with lines
-
-	// /**
-	//  * @var string    Name of subtable line
-	//  */
-	// public $table_element_line = 'dolitypology_typologyline';
-
-	// /**
-	//  * @var string    Field with ID of parent key if this object has a parent
-	//  */
-	// public $fk_element = 'fk_typology';
-
-	// /**
-	//  * @var string    Name of subtable class that manage subtable lines
-	//  */
-	// public $class_element_line = 'Typologyline';
-
-	// /**
-	//  * @var array	List of child tables. To test if we can delete object.
-	//  */
-	// protected $childtables = array();
-
-	// /**
-	//  * @var array    List of child tables. To know object to delete on cascade.
-	//  *               If name matches '@ClassNAme:FilePathClass;ParentFkFieldName' it will
-	//  *               call method deleteByParentField(parentId, ParentFkFieldName) to fetch and delete child object
-	//  */
-	// protected $childtablesoncascade = array('dolitypology_typologydet');
-
-	// /**
-	//  * @var TypologyLine[]     Array of subtable lines
-	//  */
-	// public $lines = array();
 
 
 	/**
@@ -194,6 +162,9 @@ class Typology extends CommonObject
 				}
 			}
 		}
+
+		//TODO make method to get class Extrafieldable
+		$this->fields['element_type']['arrayofkeyval'] = array('product'=>'Produit');
 	}
 
 	/**
@@ -207,7 +178,12 @@ class Typology extends CommonObject
 	{
 		$resultcreate = $this->createCommon($user, $notrigger);
 
-		//$resultvalidate = $this->validate($user, $notrigger);
+		if ($resultcreate > 0) {
+			$resultManageExtrafieldsObject = $this->manageExtrafieldsObject($user, $notrigger);
+			if ($resultManageExtrafieldsObject < 0) {
+				return  $resultManageExtrafieldsObject;
+			}
+		}
 
 		return $resultcreate;
 	}
@@ -416,7 +392,17 @@ class Typology extends CommonObject
 	 */
 	public function update(User $user, $notrigger = false)
 	{
-		return $this->updateCommon($user, $notrigger);
+		$resultupdate = $this->updateCommon($user, $notrigger);
+
+		if ($resultupdate > 0) {
+			$resultManageExtrafieldsObject = $this->manageExtrafieldsObject($user, $notrigger);
+			if ($resultManageExtrafieldsObject < 0) {
+				return  $resultManageExtrafieldsObject;
+			}
+		}
+
+
+		return $resultupdate;
 	}
 
 	/**
@@ -453,7 +439,15 @@ class Typology extends CommonObject
 			return 0;
 		}
 
-		return $this->setStatusCommon($user, self::STATUS_ENABLED, $notrigger, 'TYPOLOGY_VALIDATE');
+		$resultActif = $this->setStatusCommon($user, self::STATUS_ENABLED, $notrigger, 'TYPOLOGY_VALIDATE');
+
+		//$resultvalidate = $this->validate($user, $notrigger);
+		if ($resultActif > 0) {
+			$resultManageExtrafieldsObject = $this->manageExtrafieldsObject($user);
+			if ($resultManageExtrafieldsObject < 0) {
+				return  $resultManageExtrafieldsObject;
+			}
+		}
 	}
 
 
@@ -684,5 +678,32 @@ class Typology extends CommonObject
 		// $this->property2 = ...
 
 		$this->initAsSpecimenCommon();
+	}
+
+	/**
+	 * @param $user
+	 */
+	public function manageExtrafieldsObject($user) {
+		if ($this->status==$this::STATUS_ENABLED) {
+			$createExtra = true;
+			$extrafields = new ExtraFields($this->db);
+			$extralabels = $extrafields->fetch_name_optionals_label($this->element_type);
+			if (!empty($extralabels)) {
+				if (array_key_exists('type', $extrafields->attributes) && count($extrafields->attributes['type']) > 0) {
+					foreach ($extrafields->attributes['type'] as $key => $val) {
+						if ($key == 'dolitypo_typo') {
+							$createExtra = false;
+						}
+					}
+				}
+			}
+			if ($createExtra) {
+				$result = $extrafields->addExtraField('dolitypo_typo', "Typology", 'sellist', 1, '', $this->element_type, 0, 0, '', array('options' => array($this->table_element . ':label:rowid::status=' . $this::STATUS_ENABLED . ' AND element_type="' . $this->element_type . '"' => null)), 1, '', 1, 0, '', '', 'dolitypology@dolitypology', '$conf->dolitypology->enabled');
+				if ($result < 0) {
+					return -1;
+				}
+			}
+		}
+
 	}
 }

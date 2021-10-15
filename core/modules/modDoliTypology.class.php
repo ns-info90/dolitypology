@@ -19,14 +19,14 @@
  */
 
 /**
- * 	\defgroup   dolitypology     Module DoliTypology
+ *    \defgroup   dolitypology     Module DoliTypology
  *  \brief      DoliTypology module descriptor.
  *
  *  \file       htdocs/dolitypology/core/modules/modDoliTypology.class.php
  *  \ingroup    dolitypology
  *  \brief      Description and activation file for module DoliTypology
  */
-include_once DOL_DOCUMENT_ROOT.'/core/modules/DolibarrModules.class.php';
+include_once DOL_DOCUMENT_ROOT . '/core/modules/DolibarrModules.class.php';
 
 /**
  *  Description and activation class for module DoliTypology
@@ -77,7 +77,7 @@ class modDoliTypology extends DolibarrModules
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
 		// Key used in llx_const table to save module status enabled/disabled (where DOLITYPOLOGY is value of property name of module in uppercase)
-		$this->const_name = 'MAIN_MODULE_'.strtoupper($this->name);
+		$this->const_name = 'MAIN_MODULE_' . strtoupper($this->name);
 
 		// Name of image file used for this module.
 		// If file is in theme/yourtheme/img directory under name object_pictovalue.png, use this->picto='pictovalue'
@@ -88,33 +88,31 @@ class modDoliTypology extends DolibarrModules
 		// Define some features supported by module (triggers, login, substitutions, menus, css, etc...)
 		$this->module_parts = array(
 			// Set this to 1 if module has its own trigger directory (core/triggers)
-			'triggers' => 0,
+			'triggers'          => 0,
 			// Set this to 1 if module has its own login method file (core/login)
-			'login' => 0,
+			'login'             => 0,
 			// Set this to 1 if module has its own substitution function file (core/substitutions)
-			'substitutions' => 0,
+			'substitutions'     => 0,
 			// Set this to 1 if module has its own menus handler directory (core/menus)
-			'menus' => 0,
+			'menus'             => 0,
 			// Set this to 1 if module overwrite template dir (core/tpl)
-			'tpl' => 0,
+			'tpl'               => 0,
 			// Set this to 1 if module has its own barcode directory (core/modules/barcode)
-			'barcode' => 0,
+			'barcode'           => 0,
 			// Set this to 1 if module has its own models directory (core/modules/xxx)
-			'models' => 0,
+			'models'            => 0,
 			// Set this to 1 if module has its own printing directory (core/modules/printing)
-			'printing' => 0,
+			'printing'          => 0,
 			// Set this to 1 if module has its own theme directory (theme)
-			'theme' => 0,
+			'theme'             => 0,
 			// Set this to relative path of css file if module has its own css file
-			'css' => array(
-				//    '/dolitypology/css/dolitypology.css.php',
+			'css'               => array(//    '/dolitypology/css/dolitypology.css.php',
 			),
 			// Set this to relative path of js file if module must load a js on all pages
-			'js' => array(
-				//   '/dolitypology/js/dolitypology.js.php',
+			'js'                => array(//   '/dolitypology/js/dolitypology.js.php',
 			),
 			// Set here all hooks context managed by module. To find available hook context, make a "grep -r '>initHooks(' *" on source code. You can also set hook context to 'all'
-			'hooks' => array(
+			'hooks'             => array(
 				//   'data' => array(
 				//       'hookcontext1',
 				//       'hookcontext2',
@@ -287,19 +285,23 @@ class modDoliTypology extends DolibarrModules
 		// Add here entries to declare new menus
 		/* BEGIN MODULEBUILDER TOPMENU */
 		$this->menu[$r++] = array(
-			'fk_menu'=>'', // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
-			'type'=>'top', // This is a Top menu entry
-			'titre'=>'ModuleDoliTypologyName',
-			'prefix' => img_picto('', $this->picto, 'class="paddingright pictofixedwidth valignmiddle"'),
-			'mainmenu'=>'dolitypology',
-			'leftmenu'=>'',
-			'url'=>'/dolitypology/dolitypologyindex.php',
-			'langs'=>'dolitypology@dolitypology', // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
-			'position'=>1000 + $r,
-			'enabled'=>'$conf->dolitypology->enabled', // Define condition to show or hide menu entry. Use '$conf->dolitypology->enabled' if entry must be visible if module is enabled.
-			'perms'=>'$user->rights->dolitypology->typology->read', // Use 'perms'=>'$user->rights->dolitypology->typology->read' if you want your menu with a permission rules
-			'target'=>'',
-			'user'=>2, // 0=Menu for internal users, 1=external users, 2=both
+			'fk_menu'  => '',
+			// '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
+			'type'     => 'top', // This is a Top menu entry
+			'titre'    => 'ModuleDoliTypologyName',
+			'prefix'   => img_picto('', $this->picto, 'class="paddingright pictofixedwidth valignmiddle"'),
+			'mainmenu' => 'dolitypology',
+			'leftmenu' => '',
+			'url'      => '/dolitypology/dolitypologyindex.php',
+			'langs'    => 'dolitypology@dolitypology',
+			// Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
+			'position' => 1000 + $r,
+			'enabled'  => '$conf->dolitypology->enabled',
+			// Define condition to show or hide menu entry. Use '$conf->dolitypology->enabled' if entry must be visible if module is enabled.
+			'perms'    => '$user->rights->dolitypology->typology->read',
+			// Use 'perms'=>'$user->rights->dolitypology->typology->read' if you want your menu with a permission rules
+			'target'   => '',
+			'user'     => 2, // 0=Menu for internal users, 1=external users, 2=both
 		);
 		/* END MODULEBUILDER TOPMENU */
 		/* BEGIN MODULEBUILDER LEFTMENU TYPOLOGY
@@ -348,46 +350,46 @@ class modDoliTypology extends DolibarrModules
 		);
 		*/
 
-        $this->menu[$r++]=array(
-            // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
-            'fk_menu'=>'fk_mainmenu=dolitypology',
-            // This is a Left menu entry
-            'type'=>'left',
-            'titre'=>'List Typology',
-            'mainmenu'=>'dolitypology',
-            'leftmenu'=>'dolitypology_typology',
-            'url'=>'/dolitypology/typology_list.php',
-            // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
-            'langs'=>'dolitypology@dolitypology',
-            'position'=>1100+$r,
-            // Define condition to show or hide menu entry. Use '$conf->dolitypology->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
-            'enabled'=>'$conf->dolitypology->enabled',
-            // Use 'perms'=>'$user->rights->dolitypology->level1->level2' if you want your menu with a permission rules
-            'perms'=>'$user->rights->dolitypology->typology->read',
-            'target'=>'',
-            // 0=Menu for internal users, 1=external users, 2=both
-            'user'=>2,
-        );
-        $this->menu[$r++]=array(
-            // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
-            'fk_menu'=>'fk_mainmenu=dolitypology,fk_leftmenu=dolitypology_typology',
-            // This is a Left menu entry
-            'type'=>'left',
-            'titre'=>'New Typology',
-            'mainmenu'=>'dolitypology',
-            'leftmenu'=>'dolitypology_typology',
-            'url'=>'/dolitypology/typology_card.php?action=create',
-            // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
-            'langs'=>'dolitypology@dolitypology',
-            'position'=>1100+$r,
-            // Define condition to show or hide menu entry. Use '$conf->dolitypology->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
-            'enabled'=>'$conf->dolitypology->enabled',
-            // Use 'perms'=>'$user->rights->dolitypology->level1->level2' if you want your menu with a permission rules
-            'perms'=>'$user->rights->dolitypology->typology->read',
-            'target'=>'',
-            // 0=Menu for internal users, 1=external users, 2=both
-            'user'=>2
-        );
+		$this->menu[$r++] = array(
+			// '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
+			'fk_menu'  => 'fk_mainmenu=dolitypology',
+			// This is a Left menu entry
+			'type'     => 'left',
+			'titre'    => 'List Typology',
+			'mainmenu' => 'dolitypology',
+			'leftmenu' => 'dolitypology_typology',
+			'url'      => '/dolitypology/typology_list.php',
+			// Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
+			'langs'    => 'dolitypology@dolitypology',
+			'position' => 1100 + $r,
+			// Define condition to show or hide menu entry. Use '$conf->dolitypology->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
+			'enabled'  => '$conf->dolitypology->enabled',
+			// Use 'perms'=>'$user->rights->dolitypology->level1->level2' if you want your menu with a permission rules
+			'perms'    => '$user->rights->dolitypology->typology->read',
+			'target'   => '',
+			// 0=Menu for internal users, 1=external users, 2=both
+			'user'     => 2,
+		);
+		$this->menu[$r++] = array(
+			// '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
+			'fk_menu'  => 'fk_mainmenu=dolitypology,fk_leftmenu=dolitypology_typology',
+			// This is a Left menu entry
+			'type'     => 'left',
+			'titre'    => 'New Typology',
+			'mainmenu' => 'dolitypology',
+			'leftmenu' => 'dolitypology_typology',
+			'url'      => '/dolitypology/typology_card.php?action=create',
+			// Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
+			'langs'    => 'dolitypology@dolitypology',
+			'position' => 1100 + $r,
+			// Define condition to show or hide menu entry. Use '$conf->dolitypology->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
+			'enabled'  => '$conf->dolitypology->enabled',
+			// Use 'perms'=>'$user->rights->dolitypology->level1->level2' if you want your menu with a permission rules
+			'perms'    => '$user->rights->dolitypology->typology->read',
+			'target'   => '',
+			// 0=Menu for internal users, 1=external users, 2=both
+			'user'     => 2
+		);
 
 		/* END MODULEBUILDER LEFTMENU TYPOLOGY */
 		// Exports profiles provided by this module
@@ -447,8 +449,8 @@ class modDoliTypology extends DolibarrModules
 	 *  The init function add constants, boxes, permissions and menus (defined in constructor) into Dolibarr database.
 	 *  It also creates data directories
 	 *
-	 *  @param      string  $options    Options when enabling module ('', 'noboxes')
-	 *  @return     int             	1 if OK, 0 if KO
+	 * @param string $options Options when enabling module ('', 'noboxes')
+	 * @return     int                1 if OK, 0 if KO
 	 */
 	public function init($options = '')
 	{
@@ -476,19 +478,19 @@ class modDoliTypology extends DolibarrModules
 		// Document templates
 		$moduledir = 'dolitypology';
 		$myTmpObjects = array();
-		$myTmpObjects['Typology'] = array('includerefgeneration'=>0, 'includedocgeneration'=>0);
+		$myTmpObjects['Typology'] = array('includerefgeneration' => 0, 'includedocgeneration' => 0);
 
 		foreach ($myTmpObjects as $myTmpObjectKey => $myTmpObjectArray) {
 			if ($myTmpObjectKey == 'Typology') {
 				continue;
 			}
 			if ($myTmpObjectArray['includerefgeneration']) {
-				$src = DOL_DOCUMENT_ROOT.'/install/doctemplates/dolitypology/template_typologys.odt';
-				$dirodt = DOL_DATA_ROOT.'/doctemplates/dolitypology';
-				$dest = $dirodt.'/template_typologys.odt';
+				$src = DOL_DOCUMENT_ROOT . '/install/doctemplates/dolitypology/template_typologys.odt';
+				$dirodt = DOL_DATA_ROOT . '/doctemplates/dolitypology';
+				$dest = $dirodt . '/template_typologys.odt';
 
 				if (file_exists($src) && !file_exists($dest)) {
-					require_once DOL_DOCUMENT_ROOT.'/core/lib/files.lib.php';
+					require_once DOL_DOCUMENT_ROOT . '/core/lib/files.lib.php';
 					dol_mkdir($dirodt);
 					$result = dol_copy($src, $dest, 0, 0);
 					if ($result < 0) {
@@ -499,10 +501,10 @@ class modDoliTypology extends DolibarrModules
 				}
 
 				$sql = array_merge($sql, array(
-					"DELETE FROM ".MAIN_DB_PREFIX."document_model WHERE nom = 'standard_".strtolower($myTmpObjectKey)."' AND type = '".strtolower($myTmpObjectKey)."' AND entity = ".$conf->entity,
-					"INSERT INTO ".MAIN_DB_PREFIX."document_model (nom, type, entity) VALUES('standard_".strtolower($myTmpObjectKey)."','".strtolower($myTmpObjectKey)."',".$conf->entity.")",
-					"DELETE FROM ".MAIN_DB_PREFIX."document_model WHERE nom = 'generic_".strtolower($myTmpObjectKey)."_odt' AND type = '".strtolower($myTmpObjectKey)."' AND entity = ".$conf->entity,
-					"INSERT INTO ".MAIN_DB_PREFIX."document_model (nom, type, entity) VALUES('generic_".strtolower($myTmpObjectKey)."_odt', '".strtolower($myTmpObjectKey)."', ".$conf->entity.")"
+					"DELETE FROM " . MAIN_DB_PREFIX . "document_model WHERE nom = 'standard_" . strtolower($myTmpObjectKey) . "' AND type = '" . strtolower($myTmpObjectKey) . "' AND entity = " . $conf->entity,
+					"INSERT INTO " . MAIN_DB_PREFIX . "document_model (nom, type, entity) VALUES('standard_" . strtolower($myTmpObjectKey) . "','" . strtolower($myTmpObjectKey) . "'," . $conf->entity . ")",
+					"DELETE FROM " . MAIN_DB_PREFIX . "document_model WHERE nom = 'generic_" . strtolower($myTmpObjectKey) . "_odt' AND type = '" . strtolower($myTmpObjectKey) . "' AND entity = " . $conf->entity,
+					"INSERT INTO " . MAIN_DB_PREFIX . "document_model (nom, type, entity) VALUES('generic_" . strtolower($myTmpObjectKey) . "_odt', '" . strtolower($myTmpObjectKey) . "', " . $conf->entity . ")"
 				));
 			}
 		}
@@ -515,8 +517,8 @@ class modDoliTypology extends DolibarrModules
 	 *  Remove from database constants, boxes and permissions from Dolibarr database.
 	 *  Data directories are not deleted
 	 *
-	 *  @param      string	$options    Options when enabling module ('', 'noboxes')
-	 *  @return     int                 1 if OK, 0 if KO
+	 * @param string $options Options when enabling module ('', 'noboxes')
+	 * @return     int                 1 if OK, 0 if KO
 	 */
 	public function remove($options = '')
 	{

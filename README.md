@@ -2,7 +2,7 @@
 
 ## Features
 
-Permettre d'avoir des typologies d'objets standard pour tout les utilisateurs et developpeurs de Dolibarr
+Permettre d'avoir des typologies d'objets standard pour tous les utilisateurs et developpeurs de Dolibarr
 Par exemple pour les produits :
 - Carte grise pour les véhicules
 - Bien immobilier

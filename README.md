@@ -2,7 +2,18 @@
 
 ## Features
 
-Description of the module...
+Permettre d'avoir des typologies d'objets standard pour tout les utilisateurs et developpeurs de Dolibarr
+Par exemple pour les produits :
+- Carte grise pour les véhicules
+- Bien immobilier
+- Etc..
+Pour les services
+- Location
+- Facture
+- FactureX, Chorus
+RH
+- Accident du travail
+Etc
 
 <!--
 ![Screenshot dolitypology](img/screenshot_dolitypology.png?raw=true "DoliTypology"){imgmd}

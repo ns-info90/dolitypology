@@ -15,6 +15,9 @@ RH
 - Accident du travail
 Etc
 
+Site proposant des "normalisation"
+https://schema.org/
+
 <!--
 ![Screenshot dolitypology](img/screenshot_dolitypology.png?raw=true "DoliTypology"){imgmd}
 -->

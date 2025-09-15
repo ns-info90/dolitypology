@@ -698,7 +698,7 @@ class Typology extends CommonObject
 				}
 			}
 			if ($createExtra) {
-				$result = $extrafields->addExtraField('dolitypo_typo', "Typology", 'sellist', 1, '', $this->element_type, 0, 0, '', array('options' => array($this->table_element . ':label:rowid::status=' . $this::STATUS_ENABLED . ' AND element_type="' . $this->element_type . '"' => null)), 1, '', 1, 0, '', '', 'dolitypology@dolitypology', '$conf->dolitypology->enabled');
+				$result = $extrafields->addExtraField('dolitypo_typo', "Typology", 'sellist', 1, '', $this->element_type, 0, 0, '', array('options' => array($this->table_element . ':label:rowid::(status:=:' . $this::STATUS_ENABLED . ') AND (element_type:=:\'' . $this->element_type . '\')' => null)), 1, '', 1, 0, '', '', 'dolitypology@dolitypology', '$conf->dolitypology->enabled');
 				if ($result < 0) {
 					return -1;
 				}

@@ -283,9 +283,9 @@ class TypologyExtrafieldLink extends CommonObject
 	 * @param string $ref  Ref
 	 * @return int         <0 if KO, 0 if not found, >0 if OK
 	 */
-	public function fetch($id, $ref = null)
+	public function fetch($id, $ref = null, $morewhere = '')
 	{
-		$result = $this->fetchCommon($id, $ref);
+		$result = $this->fetchCommon($id, $ref, $morewhere);
 		if ($result > 0 && !empty($this->table_element_line)) {
 			$this->fetchLines();
 		}

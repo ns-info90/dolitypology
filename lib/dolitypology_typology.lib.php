@@ -90,3 +90,62 @@ function typologyPrepareHead($object)
 
 	return $head;
 }
+
+function fetch_extrafields($id, $elementtype) {
+	global $db;
+
+	$sql = "SELECT * ";
+	$sql .= "FROM " . MAIN_DB_PREFIX . "extrafields as e ";
+	$sql .= "WHERE e.name = '" . $id . "'";
+	$sql .= " AND e.elementtype = '" . $elementtype . "'";
+
+	$resql = $db->query($sql);
+	$records = [];
+
+	if ($resql) {
+		while ($obj = $db->fetch_object($resql)) {
+			$records[] = $obj;
+		}
+		$db->free($resql);
+	}
+
+	return $records;
+}
+
+function fetch_extrafields_id($id, $elementtype) {
+	global $db;
+
+	$sql = "SELECT * ";
+	$sql .= "FROM " . MAIN_DB_PREFIX . "extrafields as e ";
+	$sql .= "WHERE e.rowid = '" . $id . "'";
+	$sql .= " AND e.elementtype = '" . $elementtype . "'";
+
+	$resql = $db->query($sql);
+	$records = [];
+
+	if ($resql) {
+		while ($obj = $db->fetch_object($resql)) {
+			$records[] = $obj;
+		}
+		$db->free($resql);
+	}
+
+	return $records;
+}
+
+/**
+ * Marquer un événement d'appel comme traité
+ */
+function update_extrafields($id, $mode = 'add') {
+	global $db;
+
+	$sql = "UPDATE " . MAIN_DB_PREFIX . "extrafields as e ";
+	if ($mode == 'remove') {
+		$sql .= "SET typology = 0 ";
+	} else {
+		$sql .= "SET typology = 1 ";
+	}
+	$sql .= "WHERE e.rowid = " . (int)$id;
+
+	return $db->query($sql);
+}

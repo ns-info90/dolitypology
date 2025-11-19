@@ -59,7 +59,7 @@ class Typology extends CommonObject
 	/**
 	 * @var string String with name of icon for typology. Must be the part after the 'object_' into object_typology.png
 	 */
-	public $picto = 'typology@dolitypology';
+	public $picto = 'fa-list-alt_far_#00a7b7';
 
 
 	/**
@@ -616,6 +616,7 @@ class Typology extends CommonObject
 		}
 
 		$statusType = 'status' . $status;
+		if ($status == 1) $statusType = 'status4';
 
 		return dolGetStatus($this->labelStatus[$status], $this->labelStatusShort[$status], '', $statusType, $mode);
 	}

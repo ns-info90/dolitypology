@@ -1,0 +1,58 @@
+# Copyright (C) 2021 Florian  HENRY  <florian.henry@scopen.fr>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+#
+# Generic
+#
+ModuleDoliTypologyName = DoliTypology
+ModuleDoliTypologyDesc = Permet d'adosser des champs à un objet en fonction d'une typologie
+Typologys=Typologies
+Typology=Typologie
+ListTypology=Liste des typologies
+NewTypology=Nouvelle typologie
+SetToActif=Activer
+TypologyFieldsList=Liste des champs
+TypologyDoNotShowAllExtrafields=Afficher les éléments liés uniquement
+TypologyShowAllExtrafields=Afficher l'ensemble des extrafields
+
+#
+# Admin page
+#
+DoliTypologySetup = DoliTypology setup
+Settings = Settings
+DoliTypologySetupPage = DoliTypology setup page
+DOLITYPOLOGY_MYPARAM1 = My param 1
+DOLITYPOLOGY_MYPARAM1Tooltip = My param 1 tooltip
+DOLITYPOLOGY_MYPARAM2=My param 2
+DOLITYPOLOGY_MYPARAM2Tooltip=My param 2 tooltip
+
+
+#
+# About page
+#
+About = About
+DoliTypologyAbout = About DoliTypology
+DoliTypologyAboutPage = DoliTypology about page
+
+#
+# Sample page
+#
+MyPageName = My page name
+
+#
+# Sample widget
+#
+MyWidget = My widget
+MyWidgetDescription = My widget description

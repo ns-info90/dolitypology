@@ -72,7 +72,7 @@ class modDoliTypology extends DolibarrModules
 		$this->editor_url = 'https://www.example.com';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.0';
+		$this->version = '1.0.1';
 		// Url to the file with your last numberversion of this module
 		//$this->url_last_version = 'http://www.example.com/versionmodule.txt';
 
@@ -83,7 +83,7 @@ class modDoliTypology extends DolibarrModules
 		// If file is in theme/yourtheme/img directory under name object_pictovalue.png, use this->picto='pictovalue'
 		// If file is in module/img directory under name object_pictovalue.png, use this->picto='pictovalue@module'
 		// To use a supported fa-xxx css style of font awesome, use this->picto='xxx'
-		$this->picto = 'generic';
+		$this->picto = 'fa-list-alt_far_#00a7b7';
 
 		// Define some features supported by module (triggers, login, substitutions, menus, css, etc...)
 		$this->module_parts = array(
@@ -356,7 +356,7 @@ class modDoliTypology extends DolibarrModules
 			'fk_menu'  => 'fk_mainmenu=dolitypology',
 			// This is a Left menu entry
 			'type'     => 'left',
-			'titre'    => 'List Typology',
+			'titre'    => 'ListTypology',
 			'mainmenu' => 'dolitypology',
 			'leftmenu' => 'dolitypology_typology',
 			'url'      => '/dolitypology/typology_list.php',
@@ -376,7 +376,7 @@ class modDoliTypology extends DolibarrModules
 			'fk_menu'  => 'fk_mainmenu=dolitypology,fk_leftmenu=dolitypology_typology',
 			// This is a Left menu entry
 			'type'     => 'left',
-			'titre'    => 'New Typology',
+			'titre'    => 'NewTypology',
 			'mainmenu' => 'dolitypology',
 			'leftmenu' => 'dolitypology_typology',
 			'url'      => '/dolitypology/typology_card.php?action=create',

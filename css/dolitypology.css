@@ -1,0 +1,8 @@
+:root {
+	--dolitypology-color: #00a7b7;
+	--dolitypology-highlight: #f2fbfc;
+}
+
+.mod-dolitypology {}
+.mod-dolitypology #dolitypology-listfields {}
+.mod-dolitypology #dolitypology-listfields .linked-field {background: var(--dolitypology-highlight);}

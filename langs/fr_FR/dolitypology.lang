@@ -26,6 +26,7 @@ SetToActif=Activer
 TypologyFieldsList=Liste des champs
 TypologyDoNotShowAllExtrafields=Afficher les éléments liés uniquement
 TypologyShowAllExtrafields=Afficher l'ensemble des extrafields
+DisplayOnPdf=Sur les PDF
 
 #
 # Admin page

@@ -526,7 +526,8 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 		$showOnlyLinked = 0;
 	}
 	$extrafields->fetch_name_optionals_label($elementtype, false, '', $showOnlyLinked, $limit, $offset, $sortorder, $sortfield);
-	$counter = $extrafields->countExtrafields($elementtype, $showOnlyLinked);
+	$counterTotal = $extrafields->countExtrafields($elementtype, $showOnlyLinked);
+	$counter = !empty($extrafields->attributes[$elementtype]['type']) ? count($extrafields->attributes[$elementtype]['type']) : 0;
 
 	// List of mass actions available
 	if ($viewall) {
@@ -550,7 +551,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	print '<input type="hidden" name="page" value="'.$page.'">';
 	print '<input type="hidden" name="viewall" value="'.$viewall.'">';
 	print '<input type="hidden" name="contextpage" value="'.$contextpage.'">';
-	print_barre_liste($langs->trans('TypologyFieldsList'), $page, $_SERVER['PHP_SELF'], $param_url, $sortfield, $sortorder, $massactionbutton, count($extrafields->attributes[$elementtype]['type']) + 1, $counter, 'fa-list_fas_#00a7b7', 0, $newcardbutton, 'dolitypology-barre-list', $limit, 0, 0, 1);
+	print_barre_liste($langs->trans('TypologyFieldsList'), $page, $_SERVER['PHP_SELF'], $param_url, $sortfield, $sortorder, $massactionbutton, $counter + 1, $counterTotal, 'fa-list_fas_#00a7b7', 0, $newcardbutton, 'dolitypology-barre-list', $limit, 0, 0, 1);
 	//print '</form>';
 
 	//print '<p class="bold">Afficher tous les extrafields <span class="fas fa-toggle-on"></span></p>';

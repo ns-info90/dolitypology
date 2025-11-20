@@ -83,7 +83,7 @@ dol_include_once('/dolitypology/class/typologyextrafieldlink.class.php');
 dol_include_once('/dolitypology/lib/dolitypology_typology.lib.php');
 
 // Load translation files required by the page
-$langs->loadLangs(array("dolitypology@dolitypology", "other"));
+$langs->loadLangs(array("dolitypology@dolitypology", "other", "admin"));
 
 // Get parameters
 $id = GETPOST('id', 'int');

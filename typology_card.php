@@ -204,7 +204,7 @@ if (empty($reshook)) {
 		$object->setProject(GETPOST('projectid', 'int'));
 	}
 
-	if ($action == 'add_typology' && $extraKey > 0) {
+	if ($action == 'add_typology' && !empty($extraKey)) {
 		$extraInfos = fetch_extrafields($extraKey, $object->element_type);
 
 		$objecttmp = new TypologyExtrafieldLink($db);
@@ -213,8 +213,6 @@ if (empty($reshook)) {
 		$objecttmp->create($user);
 
 		setEventMessages(null, $objecttmp->errors, 'errors');
-		header("Location: " . $backtopage);
-		exit;
 	}
 
 	if ($action == 'unlink_typology') {

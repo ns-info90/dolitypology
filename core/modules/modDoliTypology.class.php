@@ -293,7 +293,7 @@ class modDoliTypology extends DolibarrModules
 			'prefix'   => img_picto('', $this->picto, 'class="paddingright pictofixedwidth valignmiddle"'),
 			'mainmenu' => 'dolitypology',
 			'leftmenu' => '',
-			'url'      => '/dolitypology/dolitypologyindex.php',
+			'url'      => '/dolitypology/typology_list.php',
 			'langs'    => 'dolitypology@dolitypology',
 			// Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
 			'position' => 1000 + $r,

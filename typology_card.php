@@ -543,7 +543,7 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 	$massactionbutton = $form->selectMassAction('', $arrayofmassactions);
 
 	$newcardbutton = '';
-	$newcardbutton .= dolGetButtonTitle($langs->trans('NewAttribute'), '', 'fa fa-plus-circle', $_SERVER["PHP_SELF"].'?id='.$object->id.'&action=createnewfield', '', 1);
+	$newcardbutton .= dolGetButtonTitle($langs->trans('NewAttribute'), '', 'fa fa-plus-circle', '/product/admin/product_extrafields.php', '', 1);
 
 	print '<form method="POST" id="searchFormList" action="'.$_SERVER["PHP_SELF"]. '?id=' . $object->id . '">';
 	print '<input type="hidden" name="token" value="'.newToken().'">';

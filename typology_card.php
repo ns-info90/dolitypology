@@ -212,6 +212,8 @@ if (empty($reshook)) {
 		$objecttmp->fk_extrafield = $extraInfos[0]->rowid;
 		$objecttmp->create($user);
 
+		update_extrafields($extraInfos[0]->rowid);
+
 		setEventMessages(null, $objecttmp->errors, 'errors');
 	}
 
@@ -220,6 +222,9 @@ if (empty($reshook)) {
 		$objecttmp = new TypologyExtrafieldLink($db);
 		$objecttmp->fetch(0, 0, ' AND fk_typology = ' . $object->id  . ' AND fk_extrafield = ' . $extraInfos[0]->rowid);
 		$objecttmp->delete($user);
+
+		update_extrafields($extraInfos[0]->rowid, 'remove');
+
 		setEventMessages(null, $objecttmp->errors, 'errors');
 		header("Location: " . $backtopage);
 		exit;

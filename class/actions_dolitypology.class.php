@@ -77,7 +77,7 @@ class ActionsDolitypology extends CommonHookActions
 	{
 		global $db, $langs, $user;
 
-		if (strpos($parameters['context'], 'productcard') !== false && !in_array($action, array('create', 'update'))) {
+		if (strpos($parameters['context'], 'productcard') !== false && !in_array($action, array('create', 'edit'))) {
 
 			dol_include_once('/dolitypology/class/typology.class.php');
 			dol_include_once('/dolitypology/class/typologyextrafieldlink.class.php');
